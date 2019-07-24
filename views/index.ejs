@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+</head>
+<body>
+  <nav class="nav-bar">
+    <ul class="nav-brand">
+      <li><i class="fas fa-cart-arrow-down"></i> Cart-a-list</li>
+    </ul>
+    <ul class="nav-items">
+      <li class="nav-item"><a href="">Products</a></li>
+      <li class="nav-item"><a href="">Cart</a></li>
+      <li class="nav-item"><a href="">Wish List</a></li>
+      <li class="nav-item"><a href="">Account</a> <i class="fas fa-user-circle"></i></li>
+    </ul>
+  </nav>
+  <header class="header">
+    <h1>Shopping Cart</h1>
+    <h3>...select your items and proceed to checkout</h3>
+  </header>
+  <section class="products-list">
+    <div class="product-container">
+      <div class="product-image">
+        <img src="/assets/images/clement-h-544786-unsplash.jpg" alt="">
+      </div>
+      <div class="product-description">
+        <p>Product Description</p>
+        <p>hp pavilion 15 ab70nr core-i5-8550U 12gb RAM 512gb UHD</p>
+        <p>In stock (only 10 left)</p>
+        <label for="coupon" class="product-coupon-check">
+          <input data-coupon-check type="checkbox" name="" id="coupon">
+          Use coupon
+          <input data-coupon-input type="text" name="" placeholder="enter coupon code">
+        </label>
+        <p><i class="far fa-heart"></i> <a href="">Save for later</a></p>
+      </div>
+      <div class="product-price">
+        <p>Price<span>(NGN)</span></p>
+        <p>235,000</p>
+      </div>
+      <div class="product-qty">
+        <p>Quantity</p>
+        <input data-product-qty type="number" name="qty" min="0" placeholder="0" />
+      </div>
+      <button>
+          <a href="#"><i class="fas fa-trash-alt"></i></a>
+      </button>
+    </div>
+  </section>
+
+  <script src="/js/index.js"></script>
+</body>
+</html>

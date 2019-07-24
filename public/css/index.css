@@ -1,0 +1,158 @@
+:root {
+  --base-color: #3d3d3d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+ul {
+  list-style: none;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-bar {
+  background: var(--base-color);
+  display: flex;
+  justify-content: space-between;
+  height: 7vh;
+  padding: 15px 20px;
+}
+
+.nav-bar ul:nth-child(2) {
+  display: flex;
+}
+
+.nav-bar ul:nth-child(2) li {
+  margin-right: 20px;
+}
+
+.nav-brand li {
+  color: cyan;
+}
+
+.nav-items li a {
+  color: whitesmoke;
+}
+
+.nav-items li:hover a {
+  color: cyan;
+}
+
+.nav-items li:last-child i {
+  color: cyan;
+  position: relative;
+  top: 1px;
+}
+
+.header {
+  height: 30vh;
+  /* border: 2px solid var(--base-color); */
+  background: url('../assets/images/Balloon\ wall.jpg') no-repeat center center/cover;
+  padding-top: 60px;
+}
+
+.header h1, h3 {
+  text-align: center;
+  color: white;
+}
+
+.products-list {
+  min-height: 63vh;
+  width: 60%;
+  border-right: 2px solid lightgrey;
+  border-left: 2px solid lightgrey;
+  margin: 0 auto;
+}
+
+.product-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+  border-bottom: 1px solid lightcoral;
+}
+
+.product-container button {
+  height: 32px;
+  width: 32px;
+  border: none;
+  background: rgb(230, 34, 34);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.product-container button i {
+  color: white;
+}
+.product-image img {
+  width: 200px;
+  height: 150px;
+}
+
+.product-description {
+  width: 40%;
+  border-right: 1px solid lightgrey;
+}
+
+.product-description p:not(first-child) {
+  color: steelblue;
+  margin-bottom: 8px;
+}
+
+.product-description p:nth-child(3), .product-description p:nth-child(5) {
+  font-size: 0.8rem;
+  color: maroon;
+}
+
+.product-description p:last-child a {
+  color: maroon;
+}
+
+.product-coupon-check {
+  color: steelblue;
+}
+
+.product-coupon-check input {
+  margin-bottom: 10px;
+  position: relative;
+  top: 2px;
+}
+
+.product-coupon-check input:nth-child(2) {
+  width: 140px;
+  padding-left: 4px;
+  border: 2px solid #7420af;
+}
+
+.product-price {
+  border-right: 1px solid lightgrey;
+  width: 13%;
+}
+
+.product-price p:nth-child(2) {
+  color: steelblue;
+  font-weight: 700;
+}
+
+.product-qty input {
+  width: 40px;
+  height: 25px;
+  font-size: 15px;
+  padding-left: 5px;
+  border: 2px solid #7420af;
+}
+
+.product-description p:first-child, .product-price p:first-child, .product-qty p {
+  color: maroon;
+  margin-bottom: 7px;
+}
