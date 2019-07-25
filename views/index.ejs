@@ -25,13 +25,14 @@
     <h3>...select your items and proceed to checkout</h3>
   </header>
   <section class="products-list">
+  <% for(let i = 0; i < products.length; i++) { %>
     <div class="product-container">
       <div class="product-image">
         <img src="/assets/images/clement-h-544786-unsplash.jpg" alt="">
       </div>
       <div class="product-description">
         <p>Product Description</p>
-        <p>hp pavilion 15 ab70nr core-i5-8550U 12gb RAM 512gb UHD</p>
+        <p><%= products[i].title %></p>
         <p>In stock (only 10 left)</p>
         <label for="coupon" class="product-coupon-check">
           <input data-coupon-check type="checkbox" name="" id="coupon">
@@ -52,6 +53,7 @@
           <a href="#"><i class="fas fa-trash-alt"></i></a>
       </button>
     </div>
+  <% } %>
   </section>
 
   <script src="/js/index.js"></script>

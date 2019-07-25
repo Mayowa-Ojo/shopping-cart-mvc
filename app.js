@@ -30,7 +30,7 @@ app.set('view engine', 'ejs');
 app.use('/products', productRouter);
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.send("Welcome to Cart-a-list");
 });
 
 app.listen(PORT, () => {
