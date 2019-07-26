@@ -25,8 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.set('views', './views');
 app.set('view engine', 'ejs');
+app.set('views', './views');
 app.use('/products', productRouter);
 
 app.get('/', (req, res) => {

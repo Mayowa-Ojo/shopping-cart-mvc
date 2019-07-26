@@ -8,14 +8,16 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const products = await product.find();
-    res.render('index', { products });
+    res.render('index', { 
+      products 
+    });
   } catch(err) {
     res.status(500).json({message: err.message})
   }
-  res.render('index');
+  // res.render('index');
 });
 
 /* add product */
-router.post
+// router.post
 
 module.exports = router;

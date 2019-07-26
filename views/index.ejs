@@ -24,37 +24,59 @@
     <h1>Shopping Cart</h1>
     <h3>...select your items and proceed to checkout</h3>
   </header>
-  <section class="products-list">
-  <% for(let i = 0; i < products.length; i++) { %>
-    <div class="product-container">
-      <div class="product-image">
-        <img src="/assets/images/clement-h-544786-unsplash.jpg" alt="">
+
+  <main class="wrapper">
+    <section class="products-list">
+    <% for(let i = 0; i < products.length; i++) { %>
+      <div class="product-container">
+        <div class="product-image">
+          <img src="<%= products[i].img_url %>" alt="">
+        </div>
+        <div class="product-description">
+          <p>Product Description</p>
+          <p><%= products[i].title %></p>
+          <p>In stock (only <%= products[i].stock %> left)</p>
+          <label for="coupon" class="product-coupon-check">
+            <input data-coupon-check type="checkbox" name="" id="coupon">
+            Use coupon
+            <input data-coupon-input type="text" name="" placeholder="enter coupon code">
+          </label>
+          <p><i class="far fa-heart"></i> <a href="">Save for later</a></p>
+        </div>
+        <div class="product-price">
+          <p>Price<span>(NGN)</span></p>
+          <p><%= products[i].price %></p>
+        </div>
+        <div class="product-qty">
+          <p>Quantity</p>
+          <input data-product-qty type="number" name="qty" min="0" placeholder="0" />
+          <button>Add To Cart</button>
+        </div>      
       </div>
-      <div class="product-description">
-        <p>Product Description</p>
-        <p><%= products[i].title %></p>
-        <p>In stock (only 10 left)</p>
-        <label for="coupon" class="product-coupon-check">
-          <input data-coupon-check type="checkbox" name="" id="coupon">
-          Use coupon
-          <input data-coupon-input type="text" name="" placeholder="enter coupon code">
-        </label>
-        <p><i class="far fa-heart"></i> <a href="">Save for later</a></p>
-      </div>
-      <div class="product-price">
-        <p>Price<span>(NGN)</span></p>
-        <p>235,000</p>
-      </div>
-      <div class="product-qty">
-        <p>Quantity</p>
-        <input data-product-qty type="number" name="qty" min="0" placeholder="0" />
-      </div>
-      <button>
+    <% } %>
+    </section>
+
+    <aside class="product-cart">
+      <h3>CART</h3>
+      <div class="cart-row">
+        <div class="cart-item">
+          <p>Item</p>
+          <img src="/assets/images/clement-h-544786-unsplash.jpg" alt="">
+        </div>
+        <div class="cart-price">
+          <p>Price</p>
+          <p>235,000.00</p>
+        </div>
+        <div class="cart-qty">
+          <p>Quantity</p>
+          <p>1</p>
+        </div>
+        <button>
           <a href="#"><i class="fas fa-trash-alt"></i></a>
-      </button>
-    </div>
-  <% } %>
-  </section>
+        </button>
+      </div>
+    </aside>
+  </main>
 
   <script src="/js/index.js"></script>
 </body>

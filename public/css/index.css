@@ -67,12 +67,17 @@ a {
   color: white;
 }
 
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 180px;
+}
+
 .products-list {
   min-height: 63vh;
-  width: 60%;
+  width: 70%;
   border-right: 2px solid lightgrey;
   border-left: 2px solid lightgrey;
-  margin: 0 auto;
 }
 
 .product-container {
@@ -82,18 +87,6 @@ a {
   border-bottom: 1px solid lightcoral;
 }
 
-.product-container button {
-  height: 32px;
-  width: 32px;
-  border: none;
-  background: rgb(230, 34, 34);
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.product-container button i {
-  color: white;
-}
 .product-image img {
   width: 200px;
   height: 150px;
@@ -144,6 +137,11 @@ a {
   font-weight: 700;
 }
 
+.product-qty {
+  display: flex;
+  flex-direction: column;
+}
+
 .product-qty input {
   width: 40px;
   height: 25px;
@@ -152,7 +150,101 @@ a {
   border: 2px solid #7420af;
 }
 
+.product-qty button {
+  border-radius: 5px;
+  background: white;
+  border: 1px solid cyan;
+  width: 105px;
+  height: 30px;
+  margin-top: 73px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.product-qty button:hover {
+  background: cyan;
+}
+
 .product-description p:first-child, .product-price p:first-child, .product-qty p {
   color: maroon;
   margin-bottom: 7px;
+}
+
+.product-cart {
+  /* border: 1px solid grey; */
+  width: 30%;
+  /* display: flex; */
+  padding-left: 10px;
+}
+
+.product-cart h3 {
+  text-align: center;
+  color: teal;
+  margin: 10px 80px 20px 0;
+}
+
+.cart-row {
+  display: flex;
+}
+
+.cart-row .cart-item {
+  width: 20%;
+  margin-right: 20px;
+  border-bottom: 1px solid orange;
+  border-top: 1px solid orange;
+  height: 100px;
+}
+
+.cart-row .cart-item img {
+  width: 85%;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  margin-left: 4px;
+}
+
+.cart-row .cart-price {
+  width: 20%;
+  margin-right: 20px;
+  border-bottom: 1px solid orange;
+  border-top: 1px solid orange;
+  height: 100px;
+}
+
+.cart-row .cart-price p:nth-child(2) {
+  font-size: 0.8rem;
+}
+
+.cart-row .cart-qty {
+  width: 20%;
+  margin-right: 20px;
+  border-bottom: 1px solid orange;
+  border-top: 1px solid orange;
+  height: 100px;
+}
+
+.cart-row .cart-qty p:nth-child(2) {
+  border: 1px solid grey;
+  width: 25px;
+  margin-left: 28px;
+  padding-left: 6px;
+}
+
+.cart-row button {
+  height: 32px;
+  width: 32px;
+  position: relative;
+  top: 30px;
+  border: none;
+  background: rgb(230, 34, 34);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.cart-row button i {
+  color: white;
+}
+
+.cart-item p:first-child, .cart-price p:first-child, .cart-qty p:first-child {
+  margin-bottom: 15px;
+  border-bottom: 1px solid orange;
+  color: teal;
 }
