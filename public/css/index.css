@@ -182,20 +182,29 @@ a {
   margin: 10px 80px 20px 0;
 }
 
+.product-cart hr {
+  border: none;
+  width: 70%;
+  color: orange;
+  height: 1px;
+  background-color: orange;
+}
+
 .cart-row {
   display: flex;
+  /* margin-bottom: 10px; */
 }
 
 .cart-row .cart-item {
   width: 20%;
   margin-right: 20px;
-  border-bottom: 1px solid orange;
   border-top: 1px solid orange;
   height: 100px;
 }
 
 .cart-row .cart-item img {
-  width: 85%;
+  width: 80%;
+  height: 50%;
   border: 1px solid #fff;
   border-radius: 5px;
   margin-left: 4px;
@@ -204,7 +213,6 @@ a {
 .cart-row .cart-price {
   width: 20%;
   margin-right: 20px;
-  border-bottom: 1px solid orange;
   border-top: 1px solid orange;
   height: 100px;
 }
@@ -216,7 +224,6 @@ a {
 .cart-row .cart-qty {
   width: 20%;
   margin-right: 20px;
-  border-bottom: 1px solid orange;
   border-top: 1px solid orange;
   height: 100px;
 }
