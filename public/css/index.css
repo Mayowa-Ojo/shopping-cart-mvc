@@ -102,29 +102,13 @@ a {
   margin-bottom: 8px;
 }
 
-.product-description p:nth-child(3), .product-description p:nth-child(5) {
+.product-description p:nth-child(3), .product-description p:nth-child(4) {
   font-size: 0.8rem;
   color: maroon;
 }
 
 .product-description p:last-child a {
   color: maroon;
-}
-
-.product-coupon-check {
-  color: steelblue;
-}
-
-.product-coupon-check input {
-  margin-bottom: 10px;
-  position: relative;
-  top: 2px;
-}
-
-.product-coupon-check input:nth-child(2) {
-  width: 140px;
-  padding-left: 4px;
-  border: 2px solid #7420af;
 }
 
 .product-price {
@@ -143,6 +127,8 @@ a {
 }
 
 .product-qty input {
+  position: relative;
+  left: 20px;
   width: 40px;
   height: 25px;
   font-size: 15px;
@@ -155,7 +141,9 @@ a {
   border: 2px solid orangered;
 }
 
-.product-qty button {
+.product-qty button {  
+  position: relative;
+  right: 8px;
   border-radius: 5px;
   background: white;
   border: 1px solid cyan;
@@ -164,11 +152,22 @@ a {
   margin-top: 73px;
   font-family: 'Courier New', Courier, monospace;
   box-shadow: 1px 2px 2px rgba(0,0,0,0.3);
+  cursor: pointer;
 }
 
 .product-qty button:hover {
   background: cyan;
   box-shadow: 3px 4px 2px rgba(0,0,0,0.4);
+}
+
+.product-qty-hover::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  z-index: 1;
+  height: 20px;
+  width: 120px;
+  background: teal;
 }
 
 .product-description p:first-child, .product-price p:first-child, .product-qty p {
@@ -269,4 +268,62 @@ a {
   margin-bottom: 15px;
   border-bottom: 1px solid orange;
   color: teal;
+}
+
+.product-coupon-check {
+  color: steelblue;
+}
+
+.product-coupon-check input[type='text'] {
+  margin-bottom: 10px;
+  position: relative;
+  top: 2px;
+  height: 30px;
+}
+
+.product-coupon-check input[type='checkbox'] {
+  position: relative;
+  top: 3px;
+}
+
+.product-coupon-check input:nth-child(2) {
+  width: 140px;
+  padding-left: 4px;
+  border: 2px solid slategrey;
+}
+
+.product-checkout {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.product-checkout p {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.product-checkout p span {
+  float: right;
+}
+
+.product-checkout label {
+  margin-bottom: 20px;
+}
+
+.product-checkout button {
+  height: 50px;
+  /* background: rgb(202, 34, 34); */
+  background: slategrey;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+}
+
+.product-checkout button:hover {
+  background: #fff;
+  border: 2px solid slategrey;
+  color: slategrey;
 }
