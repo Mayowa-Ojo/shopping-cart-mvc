@@ -12,6 +12,8 @@ function selectElements() {
   const cart = document.querySelector('.product-cart hr');
   const cart_item_images = document.querySelectorAll('.cart-item img');
   const deleteButton = document.querySelectorAll('.cart-row button');
+  const deleteButtonChild = document.querySelectorAll('.fa-trash-alt');
+  const increaseQuantityButton = document.querySelectorAll('.cart-qty i');
 
   // return an object containing each DOM element
   return ({
@@ -19,16 +21,24 @@ function selectElements() {
     cart_qty,
     cart,
     cart_item_images,
-    deleteButton
+    deleteButton,
+    deleteButtonChild,
+    increaseQuantityButton
   });
 }
 
 /* delete item from cart functionality */
 
-function removeCartItem({ target }) {
-  const parentElement = target.parentElement;
-  // console.log(parentElement)
-  parentElement.remove();
+function removeCartItem(e) {
+  if(e.target.nodeName == 'I') {
+    const parentElement = e.target.parentElement.parentElement.parentElement;
+    e.stopPropagation();
+    parentElement.remove();
+  } else if(e.target.nodeName == 'BUTTON') {
+    const parentElement = e.target.parentElement;
+    e.stopPropagation();
+    parentElement.remove();
+  }
 }
 
 /* add product to cart functionality */
@@ -58,9 +68,20 @@ function addItemToCart({ target }) {
     }
   }
   // create cart row if the condition returns false
-  createCartRow(cart_state[0]);
+  if(quantity == '') {
+    // add a class to indicate empty field
+    target.parentElement.querySelector('input').classList.add('warning');
+    // alert user
+    alert('Please specify the quantity')
+  } else {
+    createCartRow(cart_state[0]);
+    target.parentElement.querySelector('input').classList.remove('warning');
+
+  }
   // add event listener to created DOM node
   selectElements().deleteButton.forEach(btn => btn.addEventListener('click', removeCartItem));
+  selectElements().deleteButtonChild.forEach(btn => btn.addEventListener('click', removeCartItem));
+  selectElements().increaseQuantityButton.forEach(btn => btn.addEventListener('click', populateCartItem));
 }
 
 /* create a cart row */
@@ -76,7 +97,8 @@ function createCartRow(cart_item) {
       </div>
       <div class="cart-qty">
         <p>Quantity</p>
-        <p>${cart_item.quantity}</p>
+        <p contenteditable='true'>${cart_item.quantity}</p>
+        <i class="fas fa-plus-circle"></i>
       </div>
       <button>
         <a href="#"><i class="fas fa-trash-alt"></i></a>
@@ -86,6 +108,13 @@ function createCartRow(cart_item) {
   cart_row.classList.add('cart-row');
   cart_row.innerHTML = cart_row_content;
   selectElements().cart.before(cart_row);
+}
+
+function populateCartItem({ target }) {
+  const quantity = target.parentElement.querySelector('.cart-qty p:nth-child(2)');
+  const value = quantity.textContent;
+  // console.log(value);
+  quantity.textContent = `${parseInt(value) + 1}`;
 }
 
 /* event handlers */

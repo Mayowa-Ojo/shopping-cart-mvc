@@ -148,6 +148,11 @@ a {
   font-size: 15px;
   padding-left: 5px;
   border: 2px solid #7420af;
+  box-shadow: 1px 2px 2px rgba(0,0,0,0.3);
+}
+
+.product-qty input.warning {
+  border: 2px solid orangered;
 }
 
 .product-qty button {
@@ -158,10 +163,12 @@ a {
   height: 30px;
   margin-top: 73px;
   font-family: 'Courier New', Courier, monospace;
+  box-shadow: 1px 2px 2px rgba(0,0,0,0.3);
 }
 
 .product-qty button:hover {
   background: cyan;
+  box-shadow: 3px 4px 2px rgba(0,0,0,0.4);
 }
 
 .product-description p:first-child, .product-price p:first-child, .product-qty p {
@@ -233,6 +240,14 @@ a {
   width: 25px;
   margin-left: 28px;
   padding-left: 6px;
+}
+
+.cart-row .cart-qty i {
+  position: relative;
+  left: 32px;
+  top: 8px;
+  cursor: pointer;
+  color: slategray;
 }
 
 .cart-row button {
