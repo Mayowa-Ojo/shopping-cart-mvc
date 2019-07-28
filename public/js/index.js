@@ -21,6 +21,7 @@ function selectDOMElements() {
   const alertBox = document.querySelector('.alert-box');
   const emptyCart = document.querySelector('.cart-empty');
   const cartRow = document.querySelector('.cart-row');
+  const cartPurchase = document.querySelector('.cart-purchase');
 
   // return an object containing each DOM element
   return ({
@@ -37,7 +38,8 @@ function selectDOMElements() {
     header,
     alertBox,
     emptyCart,
-    cartRow
+    cartRow,
+    cartPurchase
   });
 }
 
@@ -143,6 +145,7 @@ function populateCartItem({ target }) {
   // console.log(value);
   // set the tect content to old value + 1
   quantity.textContent = `${parseInt(value) + 1}`;
+  displayCartTotal();
 }
 
 /* calculate current cart total */
@@ -225,9 +228,27 @@ function addEmptyCart() {
   selectDOMElements().emptyCart.classList.remove('cart-filled');
 }
 
+function checkOut({ target }) {
+  if(target.textContent == 'Checkout') {
+    if(selectDOMElements().cartRow !== null) {
+      selectDOMElements().emptyCart.classList.add('cart-filled');
+      selectDOMElements().cartPurchase.classList.add('purchase-true');
+      selectDOMElements().cartRow.remove();
+      target.textContent = 'Shop Again'
+    } else {
+      displayAlertBox({message: 'No items in your cart!'})
+    }
+  } else if(target.textContent == 'Shop Again') {
+    selectDOMElements().emptyCart.classList.remove('cart-filled');
+    selectDOMElements().cartPurchase.classList.remove('purchase-true');
+    target.textContent = 'Checkout'
+  }
+}
+
 /* event handlers */
 selectDOMElements().addButton.forEach(btn => btn.addEventListener('click', addItemToCart));
 selectDOMElements().addButton.forEach(btn => btn.addEventListener('mouseenter', displayPopup));
 selectDOMElements().addButton.forEach(btn => btn.addEventListener('mouseout', removePopup));
 selectDOMElements().deleteButton.forEach(btn => btn.addEventListener('mouseenter', displayPopup));
 selectDOMElements().deleteButton.forEach(btn => btn.addEventListener('mouseout', removePopup));
+selectDOMElements().checkoutButton.addEventListener('click', checkOut);
