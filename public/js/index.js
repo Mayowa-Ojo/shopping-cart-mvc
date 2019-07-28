@@ -17,6 +17,10 @@ function selectDOMElements() {
   const increaseQuantityButton = document.querySelectorAll('.cart-qty i');
   const cartTotal = document.querySelector('.product-checkout p span');
   const checkoutButton = document.querySelector('.product-checkout button');
+  const header = document.querySelector('.header');
+  const alertBox = document.querySelector('.alert-box');
+  const emptyCart = document.querySelector('.cart-empty');
+  const cartRow = document.querySelector('.cart-row');
 
   // return an object containing each DOM element
   return ({
@@ -29,7 +33,11 @@ function selectDOMElements() {
     increaseQuantityButton,
     cartTotal,
     checkoutButton,
-    cartPrice
+    cartPrice,
+    header,
+    alertBox,
+    emptyCart,
+    cartRow
   });
 }
 
@@ -43,6 +51,10 @@ function removeCartItem(e) {
     const parentElement = e.target.parentElement;
     e.stopPropagation();
     parentElement.remove();
+  }
+
+  if(selectDOMElements().cartRow == null) {
+    addEmptyCart();
   }
 
   // display cart total
@@ -71,7 +83,7 @@ function addItemToCart({ target }) {
 
   for(let i = 0; i < cart_images.length; i++) {
     if(cart_images[i].src == cart_state[0].image) {
-      alert('This item is in your cart');
+      displayAlertBox({message: 'This item is in your cart'})
       return;
     }
   }
@@ -80,11 +92,12 @@ function addItemToCart({ target }) {
     // add a class to indicate empty field
     target.parentElement.querySelector('input').classList.add('warning');
     // alert user
-    alert('Please specify the quantity')
+    // alert('Please specify the quantity')
+    displayAlertBox({message: 'Please specify the quantity'});
   } else {
     createCartRow(cart_state[0]);
     target.parentElement.querySelector('input').classList.remove('warning');
-
+    removeEmptyCart();
   }
 
   // display cart total
@@ -119,9 +132,11 @@ function createCartRow(cart_item) {
   const cart_row = document.createElement('div');
   cart_row.classList.add('cart-row');
   cart_row.innerHTML = cart_row_content;
+  // append html to DOM
   selectDOMElements().cart.before(cart_row);
 }
 
+/* increase quantity of a cart item */
 function populateCartItem({ target }) {
   const quantity = target.parentElement.querySelector('.cart-qty p:nth-child(2)');
   const value = quantity.textContent;
@@ -130,6 +145,7 @@ function populateCartItem({ target }) {
   quantity.textContent = `${parseInt(value) + 1}`;
 }
 
+/* calculate current cart total */
 function displayCartTotal() {
   const items = [];
   const quantity = [...selectDOMElements().cartQuantity];
@@ -144,15 +160,74 @@ function displayCartTotal() {
   selectDOMElements().cartTotal.textContent = total;
 }
 
+/* dislay a popup dialog on hover */
 function displayPopup(e) {
-  e.target.classList.add('product-qty-hover');
+  // call add button popup function
+  if(e.target.parentElement.classList.value == 'product-qty') {
+    (function addButtonPopup() {
+      e.target.classList.add('product-qty-hover');
+    }());
+  }
+  
+  // call delete button popup function
+  if(e.target.parentElement.classList.value == 'cart-row') {
+    (function addButtonPopup() {
+      e.target.classList.add('cart-row-hover');
+    }());
+  }
+  
+  /*
+  // call plus button popup function
+  if(e.target.parentElement.classList.value == 'cart-qty') {
+    (function addButtonPopup() {
+      e.target.classList.add('cart-qty-hover');
+    }());
+  }
+  */
 }
 
+/* remove popup dialog */
 function removePopup(e) {
   e.target.classList.remove('product-qty-hover');
+  e.target.classList.remove('cart-row-hover');
+}
+
+function displayAlertBox(message) {
+  const alertBoxContent = `
+    <h2>${message.message}</h2>
+    <i class="far fa-times-circle"></i>
+  `;
+
+  const alertBox = document.createElement('div');
+  alertBox.classList.add('alert-box');
+  alertBox.innerHTML = alertBoxContent;
+  // append to DOM
+  selectDOMElements().header.after(alertBox);
+  alertBox.querySelector('i').addEventListener('click', removeAlertBox)
+
+  setTimeout(() => {
+    window.addEventListener('click', removeAlertBox);
+  }, 1000);
+}
+
+function removeAlertBox() {
+  selectDOMElements().alertBox.remove();
+  setTimeout(() => {
+    window.removeEventListener('click', removeAlertBox);
+  }, 1000);
+}
+
+function removeEmptyCart() {
+  selectDOMElements().emptyCart.classList.add('cart-filled');
+}
+
+function addEmptyCart() {
+  selectDOMElements().emptyCart.classList.remove('cart-filled');
 }
 
 /* event handlers */
 selectDOMElements().addButton.forEach(btn => btn.addEventListener('click', addItemToCart));
 selectDOMElements().addButton.forEach(btn => btn.addEventListener('mouseenter', displayPopup));
 selectDOMElements().addButton.forEach(btn => btn.addEventListener('mouseout', removePopup));
+selectDOMElements().deleteButton.forEach(btn => btn.addEventListener('mouseenter', displayPopup));
+selectDOMElements().deleteButton.forEach(btn => btn.addEventListener('mouseout', removePopup));
