@@ -178,15 +178,6 @@ function displayPopup(e) {
       e.target.classList.add('cart-row-hover');
     }());
   }
-  
-  /*
-  // call plus button popup function
-  if(e.target.parentElement.classList.value == 'cart-qty') {
-    (function addButtonPopup() {
-      e.target.classList.add('cart-qty-hover');
-    }());
-  }
-  */
 }
 
 /* remove popup dialog */
@@ -234,14 +225,15 @@ function checkOut({ target }) {
       selectDOMElements().emptyCart.classList.add('cart-filled');
       selectDOMElements().cartPurchase.classList.add('purchase-true');
       selectDOMElements().cartRow.remove();
-      target.textContent = 'Shop Again'
+      target.textContent = 'Shop Again';
+      selectDOMElements().cartTotal.textContent = '0';      
     } else {
-      displayAlertBox({message: 'No items in your cart!'})
+      displayAlertBox({message: 'No items in your cart!'});
     }
   } else if(target.textContent == 'Shop Again') {
     selectDOMElements().emptyCart.classList.remove('cart-filled');
     selectDOMElements().cartPurchase.classList.remove('purchase-true');
-    target.textContent = 'Checkout'
+    target.textContent = 'Checkout';
   }
 }
 
