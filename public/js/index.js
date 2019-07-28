@@ -197,7 +197,7 @@ function displayAlertBox(message) {
   alertBox.innerHTML = alertBoxContent;
   // append to DOM
   selectDOMElements().header.after(alertBox);
-  alertBox.querySelector('i').addEventListener('click', removeAlertBox)
+  alertBox.querySelector('i').addEventListener('click', removeAlertBox);
 
   setTimeout(() => {
     window.addEventListener('click', removeAlertBox);
