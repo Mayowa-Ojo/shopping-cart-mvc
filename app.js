@@ -2,11 +2,11 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const env = require('dotenv');
+// const env = require('dotenv');
 const productRouter = require('./routes/products');
 
 /* setup env and express */
-env.config();
+// env.config();
 const app = express();
 
 /* global variables */
