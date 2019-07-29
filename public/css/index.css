@@ -62,13 +62,14 @@ a {
 .header {
   height: 30vh;
   /* border: 2px solid var(--base-color); */
-  background: url('../assets/images/Balloon\ wall.jpg') no-repeat center center/cover;
+  background: url('../assets/images/cart.jpg') no-repeat center center/cover;
   padding-top: 60px;
 }
 
 .header h1, h3 {
   text-align: center;
-  color: white;
+  color: whitesmoke;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
 }
 
 .wrapper {
