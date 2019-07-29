@@ -5,13 +5,13 @@ const bodyParser    = require('body-parser');
 const productRouter = require('./routes/products');
 
 /* setup env and express */
-const env = require('dotenv').config() || null;
 const app = express();
 
 /* global variables */
 let PORT, DATABASE_URL;
 const { log } = console;
-if(env !== null) {
+if(!process.env.NODE_ENV) {
+  const env = require('dotenv').config();
   PORT = process.env.PORT;
   DATABASE_URL = process.env.DATABASE_URL;
 }
