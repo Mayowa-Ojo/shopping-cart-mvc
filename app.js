@@ -14,6 +14,9 @@ if(!process.env.NODE_ENV) {
   const env = require('dotenv').config();
   PORT = process.env.PORT;
   DATABASE_URL = process.env.DATABASE_URL;
+} else {
+  PORT = process.env.PORT;
+  DATABASE_URL = process.env.DATABASE_URL;
 }
 
 /* connect mongoose */
