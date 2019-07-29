@@ -3,6 +3,7 @@ const express       = require('express');
 const mongoose      = require('mongoose');
 const bodyParser    = require('body-parser');
 const productRouter = require('./routes/products');
+const seedDB = require('./seed');
 
 /* setup env and express */
 const app = express();
@@ -35,6 +36,7 @@ app.set('views', './views');
 app.use('/products', productRouter);
 
 app.get('/', (req, res) => {
+  seedDB();
   res.render('landing');
 });
 
