@@ -1,18 +1,20 @@
-const express = require('express');
-const path = require('path');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-// const env = require('dotenv');
+const path          = require('path');
+const express       = require('express');
+const mongoose      = require('mongoose');
+const bodyParser    = require('body-parser');
 const productRouter = require('./routes/products');
 
 /* setup env and express */
-// env.config();
+const env = require('dotenv').config() || null;
 const app = express();
 
 /* global variables */
+let PORT, DATABASE_URL;
 const { log } = console;
-const PORT = process.env.PORT;
-const DATABASE_URL = process.env.DATABASE_URL;
+if(env !== null) {
+  PORT = process.env.PORT;
+  DATABASE_URL = process.env.DATABASE_URL;
+}
 
 /* connect mongoose */
 mongoose.connect(DATABASE_URL, ({ useNewUrlParser: true }));
@@ -30,7 +32,7 @@ app.set('views', './views');
 app.use('/products', productRouter);
 
 app.get('/', (req, res) => {
-  res.send("Welcome to Cart-a-list");
+  res.render('landing');
 });
 
 app.listen(PORT, () => {

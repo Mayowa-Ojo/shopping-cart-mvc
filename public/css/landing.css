@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  background: url('/assets/images/mall.jpg') no-repeat center center/cover;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: black;
+  opacity: 0.3;
+}
+
+.welcome-page {
+  position: relative;
+  z-index: 2;
+  width: 20%;
+  height: 30%;
+  margin: 35vh auto;
+}
+
+.welcome-page h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+  font-size: 2.8rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.welcome-page p {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.welcome-page a {
+  display: inline-block;
+  text-decoration: none;
+  background: orange;
+  color: white;
+  width: 300px;
+  height: 50px;
+  position: relative;
+  left: 3%;
+  padding: 13px 5px;
+  text-align: center;
+  font-size: 1.3rem;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.welcome-page a:hover {
+  opacity: 0.9;
+}

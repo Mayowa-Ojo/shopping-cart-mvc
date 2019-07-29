@@ -40,8 +40,9 @@ a {
   margin-right: 20px;
 }
 
-.nav-brand li {
+.nav-brand li, .nav-brand li a {
   color: cyan;
+  padding-left: 7px;
 }
 
 .nav-items li a {
